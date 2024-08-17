@@ -1,5 +1,6 @@
 import CTASection from "@/components/CTASection";
 import Features from "@/components/Features";
+import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import LearnSection from "@/components/LearnSection";
 import Navbar from "@/components/Navbar";
@@ -15,6 +16,7 @@ export default function Home() {
       <LearnSection />
       <TestimonialSection />
       <CTASection />
+      <Footer />
     </main>
   );
 }
