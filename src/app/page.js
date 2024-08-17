@@ -1,7 +1,9 @@
+import CTASection from "@/components/CTASection";
 import Features from "@/components/Features";
 import Hero from "@/components/Hero";
 import LearnSection from "@/components/LearnSection";
 import Navbar from "@/components/Navbar";
+import TestimonialSection from "@/components/TestimonialSection";
 import Image from "next/image";
 
 export default function Home() {
@@ -11,6 +13,8 @@ export default function Home() {
       <Hero />
       <Features />
       <LearnSection />
+      <TestimonialSection />
+      <CTASection />
     </main>
   );
 }
