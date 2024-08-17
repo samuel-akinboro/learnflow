@@ -3,8 +3,8 @@ import Link from "next/link"
 
 const Navbar = () => {
   return (
-    <header class="sticky top-4 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full">
-      <nav class="relative max-w-[66rem] w-full bg-herobg rounded-[28px] py-3 ps-5 pe-2 md:flex md:items-center md:justify-between md:py-0 mx-2 lg:mx-auto" aria-label="Global">
+    <header class="sticky top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full">
+      <nav class="relative max-w-[66rem] w-full bg-herobg rounded-[28px] py-3 ps-5 pe-5 md:flex md:items-center md:justify-between md:py-0 mx-2 lg:mx-auto" aria-label="Global">
         <div class="flex items-center justify-between w-full md:w-auto">
           {/* <!-- Logo --> */}
           <Link class="flex-none rounded-md text-xl inline-block font-semibold focus:outline-none focus:opacity-80" href="/" aria-label="Preline">
@@ -43,7 +43,7 @@ const Navbar = () => {
 
         {/* <!-- Contact Us Button --> */}
         <div class="hidden md:block">
-          <Link class="group inline-flex items-center gap-x-2 py-2 px-3 whitespace-nowrap text-sm text-heroyellow rounded-full border border-heroyellow" href="/">
+          <Link class="group inline-flex items-center gap-x-2 py-2 px-3 whitespace-nowrap text-sm text-heroyellow rounded-2xl border border-heroyellow" href="/">
             Lets start your learning journey
           </Link>
         </div>
