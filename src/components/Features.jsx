@@ -2,16 +2,16 @@ import FeatureCard from "./FeatureCard"
 
 const Features = () => {
   return (
-    <div class="bg-white">
-      <div class="max-w-5xl px-4 xl:px-0 py-12 md:py-24 mx-auto">
+    <div className="bg-white">
+      <div className="max-w-5xl px-4 xl:px-0 py-12 md:py-24 mx-auto">
         {/* <!-- Title --> */}
-        <div class="max-w-3xl mb-10 lg:mb-14 mx-auto">
-          <h2 class="text-xl font-medium md:text-4xl md:leading-tight text-black text-center">Special features that make our online courses the best</h2>
+        <div className="max-w-3xl mb-10 lg:mb-14 mx-auto">
+          <h2 className="text-xl font-medium md:text-4xl md:leading-tight text-black text-center">Special features that make our online courses the best</h2>
         </div>
         {/* <!-- End Title --> */}
 
         {/* <!-- Card Grid --> */}
-        <div class="grid grid-cols-1 lg:grid-cols-3 items-center gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 items-center gap-4">
           <FeatureCard
             title='Made by Experts'
             description='Our programming languages courses are meticulously crafted and taught by industry experts who bring years of practical experience'

@@ -15,7 +15,8 @@ module.exports = {
       },
       colors: {
         herobg: '#1E1E1E',
-        heroyellow: '#F7CA4E'
+        heroyellow: '#F7CA4E',
+        herogray: '#555555'
       }
     },
   },

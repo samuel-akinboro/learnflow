@@ -15,7 +15,7 @@ const Hero = () => {
               Learn at your own pace with lifetime access on mobile and desktop.
             </p>
           </div>
-          <Link class="group inline-flex items-center gap-x-2 py-2 px-4 whitespace-nowrap text-sm text-herobg rounded-xl bg-heroyellow mt-5" href="/">
+          <Link className="group inline-flex items-center gap-x-2 py-2 px-4 whitespace-nowrap text-sm text-herobg rounded-xl bg-heroyellow mt-5" href="/">
             Start a new course!
           </Link>
           <div className="flex flex-col items-center mt-5">
