@@ -9,7 +9,7 @@ const LearnSection = () => {
           {/* <!-- End Col --> */}
           <div className="md:block relative">
             <Image
-              className="rounded-xl"
+              className="rounded-xl w-full md:w-auto"
               src="/images/ln-1.png"
               width={494}
               height={427}
@@ -42,7 +42,7 @@ const LearnSection = () => {
               <p className="text-herogray md:text-base md:leading-normal xl:text-base xl:leading-normal text-sm mt-2">
                 Learnflow is an online course className that provides various categories of programming courses.
               </p>
-              <Link className="group inline-flex items-center gap-x-2 py-2 px-8 whitespace-nowrap text-sm text-herobg rounded-xl bg-heroyellow mt-5" href="/">
+              <Link className="group inline-flex items-center gap-x-2 py-2 px-8 whitespace-nowrap text-sm text-herobg rounded-xl bg-heroyellow mt-5 mb-8" href="/">
                 Get started
               </Link>
             </blockquote>
@@ -51,7 +51,7 @@ const LearnSection = () => {
           {/* <!-- End Col --> */}
           <div className="md:block relative">
             <Image
-              className="rounded-xl"
+              className="rounded-xl w-full md:w-auto"
               src="/images/ln-2.png"
               width={494}
               height={427}

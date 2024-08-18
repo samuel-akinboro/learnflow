@@ -14,7 +14,7 @@ const TestimonialSection = () => {
           {/* <!-- End Title --> */}
 
           {/* <!-- Grid --> */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 xl:gap-6 relative -bottom-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-4 gap-4 xl:gap-6 relative -bottom-6">
             {/* <!-- Col --> */}
             <div className="space-y-4 xl:space-y-6">
               <TestimonialCard />
