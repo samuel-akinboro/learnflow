@@ -3,9 +3,20 @@ import Breadcrumb from '@/components/dashboard/Breadcrumb'
 import Header from '@/components/dashboard/Header'
 import Sidebar from '@/components/dashboard/Sidebar'
 import { useState } from 'react';
+import { useAuth } from '@/hooks/useAuth'
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react'
 
 const SettingsPage = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter();
+  const { user, loading } = useAuth();
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push('/login');
+    }
+  }, [user, loading, router]);
   return (
     <div className='bg-[#F5F6F7] min-h-screen'>
       <Header />

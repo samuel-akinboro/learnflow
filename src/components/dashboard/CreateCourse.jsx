@@ -1,10 +1,12 @@
 "use client";
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { db, storage } from '@/firebaseConfig';
 import { collection, addDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import LoadingSpinner from './LoadingSpinner';
+import { toast } from 'react-toastify';
+import { useAuth } from '@/hooks/useAuth';
 
 const CreateCourse = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -17,6 +19,8 @@ const CreateCourse = () => {
   const [imagePreview, setImagePreview] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const fileInputRef = useRef(null);
+
+  const { user } = useAuth();
 
   const handleInputChange = (e) => {
     const { name, value, files } = e.target;
@@ -68,15 +72,23 @@ const CreateCourse = () => {
         imageUrl: imageUrl,
         price: parseFloat(courseData.price),
         createdAt: new Date(),
+        author: {
+          uid: user?.uid,
+          displayName: user?.displayName,
+          email: user?.email
+        },
+        authorId: user?.uid
       };
 
       await addCourseToFirestore(courseToAdd);
       setIsModalOpen(false);
       setCourseData({ title: '', description: '', image: null, price: '' });
       setImagePreview(null);
+      toast.success("Course created !");
       // You might want to add a success message or redirect here
     } catch (error) {
       console.error("Error creating course:", error);
+      toast.error("An error occured !");
       // Handle error (e.g., show error message to user)
     } finally {
       setIsLoading(false);

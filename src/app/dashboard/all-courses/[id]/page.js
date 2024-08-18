@@ -1,13 +1,51 @@
+"use client";
 import AllCourses from '@/components/dashboard/AllCourses'
 import Breadcrumb from '@/components/dashboard/Breadcrumb'
 import ContinueLearningCard from '@/components/dashboard/ContinueLearningCard'
 import CourseDetails from '@/components/dashboard/CourseDetails'
 import Header from '@/components/dashboard/Header'
+import LoadingSpinner from '@/components/dashboard/LoadingSpinner';
 import Sidebar from '@/components/dashboard/Sidebar'
+import { db } from '@/firebaseConfig'
+import { useAuth } from '@/hooks/useAuth';
+import { doc, getDoc } from 'firebase/firestore'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useParams, useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 const AllCoursesPage = () => {
+  const router = useRouter();
+  const { id } = useParams();
+  const [course, setCourse] = useState(null);
+  const { user, loading } = useAuth();
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push('/login');
+    }
+  }, [user, loading, router]);
+
+  useEffect(() => {
+    console.log({id})
+    if (id) {
+      const fetchCourse = async () => {
+        const courseDoc = await getDoc(doc(db, 'courses', id));
+        if (courseDoc.exists()) {
+          setCourse(courseDoc.data());
+        } else {
+          console.log("No such document!");
+        }
+      };
+
+      fetchCourse();
+    }
+  }, [id]);
+
+  // if (!course) {
+  //   return <div>Loading...</div>;
+  // }
+
   return (
     <div className='bg-[#F5F6F7] min-h-screen'>
       <Header />
@@ -28,11 +66,13 @@ const AllCoursesPage = () => {
             <hr className="my-8 border-gray-200" /> */}
             <div className="container mx-auto p-4 max-w-4xl">
               <nav className="mb-4">
-                <Link href="/dashboard/all-courses" className="text-black hover:text-heroyellow">
+                <div className="text-black hover:text-heroyellow cursor-pointer" onClick={() => router.back()}>
                   &larr; Back to Courses
-                </Link>
+                </div>
               </nav>
-              
+              {!course && (
+                <LoadingSpinner />
+              )}
               <div className="bg-white rounded-lg shadow-lg overflow-hidden">
                 <div className="p-4 md:p-6">
                   <div className="mb-6 relative w-full h-64">
@@ -46,18 +86,15 @@ const AllCoursesPage = () => {
                   </div>
                   
                   <div className='xl:flex gap-8 mt-8'>
-                    <div>
-                      <h1 className="text-2xl md:text-3xl mb-4">Introduction to CSS language</h1>
+                    <div className='flex-1'>
+                      <h1 className="text-2xl md:text-3xl mb-4 dark:text-black">{course?.title}</h1>
                       
                       <p className="text-herogray mb-6">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies dui vitae
-                        pulvinar luctus. Fusce lacinia tempus nec ligula. Sit amet lobortis augue id justo.
-                        Aliquam erat volutpat. Sed euismod, nunc vel tincidunt lacinia, nisl nisl aliquam nisl,
-                        nec aliquam nisl nisl sit amet nisl.
+                        {course?.description}
                       </p>
                     </div>
                     
-                    <CourseDetails />
+                    <CourseDetails author={course?.author} />
                   </div>
                 </div>
               </div>

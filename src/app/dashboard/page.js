@@ -1,10 +1,23 @@
+"use client";
 import Breadcrumb from '@/components/dashboard/Breadcrumb'
 import ContinueLearningCard from '@/components/dashboard/ContinueLearningCard'
 import Header from '@/components/dashboard/Header'
 import LanguageCourses from '@/components/dashboard/LanguageCourses'
 import Sidebar from '@/components/dashboard/Sidebar'
+import { useAuth } from '@/hooks/useAuth'
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react'
 
 const Dashboard = () => {
+  const router = useRouter();
+  const { user, loading } = useAuth();
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push('/login');
+    }
+  }, [user, loading, router]);
+
   return (
     <div className='bg-[#F5F6F7] min-h-screen'>
       <Header />
