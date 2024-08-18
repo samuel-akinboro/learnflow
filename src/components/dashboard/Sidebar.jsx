@@ -17,10 +17,10 @@ const Sidebar = () => {
     return (
       <>
         <Link
-          className={`flex items-center gap-x-3.5 py-3 px-5 text-sm rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 relative ${
+          className={`flex items-center gap-x-3.5 py-3 px-5 text-sm rounded-lg dark:focus:bg-neutral-700 relative ${
             isActive
               ? 'bg-[#2A2A2A] text-white dark:bg-neutral-700 dark:text-white hover:bg-[#2A2A2A]'
-              : 'text-gray-600 dark:text-gray-400'
+              : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-neutral-700'
           }`}
           href={href}
         >
