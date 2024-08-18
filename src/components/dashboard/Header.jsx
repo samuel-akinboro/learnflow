@@ -8,8 +8,11 @@ const Header = () => {
       <nav className="px-4 sm:px-6 flex basis-full items-center w-full mx-auto">
         <div className="me-5 lg:me-0 lg:hidden">
           {/* <!-- Logo --> */}
-          <Link className="flex-none rounded-xl text-xl inline-block font-semibold focus:outline-none focus:opacity-80" href="/dashboard" aria-label="Preline">
-            <Image src="/images/logo.png" className="mr-3" alt="Learn flow Logo" width={155} height={33} />
+          <Link className="flex-none rounded-xl text-xl dark:inline-block font-semibold focus:outline-none focus:opacity-80 hidden" href="/dashboard" aria-label="Preline">
+            <Image src="/images/logo.png" className="mr-3 h-8" alt="Learn flow Logo" width={155} height={33} />
+          </Link>
+          <Link className="flex-none rounded-xl text-xl inline-block font-semibold focus:outline-none focus:opacity-80 dark:hidden" href="/dashboard" aria-label="Preline">
+            <Image src="/images/logo-black.png" className="mr-3 h-8" alt="Learn flow Logo" width={155} height={33} />
           </Link>
           {/* <!-- End Logo --> */}
         </div>

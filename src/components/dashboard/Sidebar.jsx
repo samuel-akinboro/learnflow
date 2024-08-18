@@ -1,9 +1,14 @@
 "use client";
+import { auth } from "@/firebaseConfig";
 import Image from "next/image"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
+import { useState } from "react";
 
 const Sidebar = () => {
+  const [showLogoutConfirmation, setShowLogoutConfirmation] = useState(false)
+  const router = useRouter()
+
   const NavLink = ({ href, children }) => {
     const pathname = usePathname()
     const isActive = pathname === href
@@ -25,6 +30,15 @@ const Sidebar = () => {
         </Link>
       </>
     )
+  }
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth)
+      router.push('/login') // Redirect to login page after logout
+    } catch (error) {
+      console.error("Error logging out:", error)
+    }
   }
 
   return (
@@ -99,7 +113,7 @@ const Sidebar = () => {
                 </NavLink>
               </li>
               <li>
-                <button className="flex items-center gap-x-3.5 py-3 px-5 text-sm rounded-lg hover:bg-red-50 hover:text-red-500 dark:hover:bg-neutral-700 relative text-gray-600 dark:text-gray-400 w-full">
+                <button className="flex items-center gap-x-3.5 py-3 px-5 text-sm rounded-lg hover:bg-red-50 hover:text-red-500 dark:hover:bg-neutral-700 relative text-gray-600 dark:text-gray-400 w-full" onClick={() => setShowLogoutConfirmation(true)}>
                   <svg className="shrink-0 size-4" stroke="currentColor" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9.90005 12.8651C9.74172 12.8651 9.58338 12.8068 9.45838 12.6818L7.32505 10.5485C7.08338 10.3068 7.08338 9.9068 7.32505 9.66514C7.56672 9.42347 7.96672 9.42347 8.20838 9.66514L9.90005 11.3568L11.5917 9.66514C11.8334 9.42347 12.2334 9.42347 12.475 9.66514C12.7167 9.9068 12.7167 10.3068 12.475 10.5485L10.3417 12.6818C10.2167 12.8068 10.0584 12.8651 9.90005 12.8651Z" fill="currentColor" fillOpacity="1"/>
                     <path d="M9.90039 12.807C9.55872 12.807 9.27539 12.5237 9.27539 12.182V3.70703C9.27539 3.36536 9.55872 3.08203 9.90039 3.08203C10.2421 3.08203 10.5254 3.36536 10.5254 3.70703V12.182C10.5254 12.5237 10.2421 12.807 9.90039 12.807Z" fill="currentColor" fillOpacity="1"/>
@@ -108,6 +122,29 @@ const Sidebar = () => {
                   Log out
                 </button>
               </li>
+              {/* Logout Confirmation Modal */}
+              {showLogoutConfirmation && (
+                // <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 text-black">
+                  <div className="bg-white p-6 rounded-lg shadow-lg text-black w-full">
+                    <h6 className="text font-medium mb-2">Confirm Logout</h6>
+                    <p className="mb-4 text-sm text-herogray">Are you sure you want to log out?</p>
+                    <div className="flex justify-between gap-2">
+                      <button
+                        className="px-4 py-2 bg-gray-200 text-gray-800 rounded flex-1 text-sm"
+                        onClick={() => setShowLogoutConfirmation(false)}
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        className="px-4 py-2 bg-red-500 text-white rounded flex-1 text-sm"
+                        onClick={handleLogout}
+                      >
+                        Logout
+                      </button>
+                    </div>
+                  </div>
+                // </div>
+              )}
             </ul>
           </nav>
         </div>

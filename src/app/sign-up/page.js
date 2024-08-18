@@ -2,10 +2,59 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { useRouter } from 'next/navigation';
+import { auth } from '@/firebaseConfig';
+
+function LoadingSpinner() {
+  return (
+    <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+    </svg>
+  );
+}
 
 export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    setIsLoading(true);
+
+    if (!email || !username || !password || !confirmPassword) {
+      setError('Please fill in all fields');
+      setIsLoading(false);
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError('Passwords do not match');
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(userCredential.user, {
+        displayName: username
+      });
+      router.push('/dashboard');
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-white flex items-center justify-center px-4">
@@ -18,19 +67,43 @@ export default function SignUp() {
             <h2 className="text-2xl font-light mb-1 text-black">Welcome !</h2>
             <h1 className="text-3xl font-medium mb-2 text-black">Sign up to</h1>
             <p className="text-gray-600 mb-6">Lorem ipsum is simply</p>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email" className="w-full px-3 py-3 border border-[#282828] rounded-md focus:outline-none focus:ring-1 focus:ring-heroyellow placeholder:text-[#ABABAB] text-sm" />
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email" 
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email" 
+                  className="w-full px-3 py-3 border border-[#282828] rounded-md focus:outline-none focus:ring-1 focus:ring-heroyellow placeholder:text-[#ABABAB] text-sm dark:text-herogray" 
+                />
               </div>
               <div className="mb-4">
                 <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-2">User name</label>
-                <input type="text" id="username" name="username" placeholder="Enter your user name" className="w-full px-3 py-3 border border-[#282828] rounded-md focus:outline-none focus:ring-1 focus:ring-heroyellow placeholder:text-[#ABABAB] text-sm" />
+                <input 
+                  type="text" 
+                  id="username" 
+                  name="username" 
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="Enter your user name" 
+                  className="w-full px-3 py-3 border border-[#282828] rounded-md focus:outline-none focus:ring-1 focus:ring-heroyellow placeholder:text-[#ABABAB] text-sm dark:text-herogray" 
+                />
               </div>
               <div className="mb-4">
                 <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">Password</label>
                 <div className="relative">
-                  <input type={showPassword ? "text" : "password"} id="password" name="password" placeholder="Enter your Password" className="w-full px-3 py-3 border border-[#282828] rounded-md focus:outline-none focus:ring-1 focus:ring-heroyellow placeholder:text-[#ABABAB] text-sm" />
+                  <input 
+                    type={showPassword ? "text" : "password"} 
+                    id="password" 
+                    name="password" 
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Enter your Password" 
+                    className="w-full px-3 py-3 border border-[#282828] rounded-md focus:outline-none focus:ring-1 focus:ring-heroyellow placeholder:text-[#ABABAB] text-sm dark:text-herogray" 
+                  />
                   <button type="button" className="absolute inset-y-0 right-0 pr-3 flex items-center" onClick={() => setShowPassword(!showPassword)}>
                     {showPassword ? (
                       <svg className="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -48,7 +121,15 @@ export default function SignUp() {
               <div className="mb-6">
                 <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
                 <div className="relative">
-                  <input type={showConfirmPassword ? "text" : "password"} id="confirmPassword" name="confirmPassword" placeholder="Confirm your Password" className="w-full px-3 py-3 border border-[#282828] rounded-md focus:outline-none focus:ring-1 focus:ring-heroyellow placeholder:text-[#ABABAB] text-sm" />
+                  <input 
+                    type={showConfirmPassword ? "text" : "password"} 
+                    id="confirmPassword" 
+                    name="confirmPassword" 
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    placeholder="Confirm your Password" 
+                    className="w-full px-3 py-3 border border-[#282828] rounded-md focus:outline-none focus:ring-1 focus:ring-heroyellow placeholder:text-[#ABABAB] text-sm dark:text-herogray" 
+                  />
                   <button type="button" className="absolute inset-y-0 right-0 pr-3 flex items-center" onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
                     {showConfirmPassword ? (
                       <svg className="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -63,7 +144,21 @@ export default function SignUp() {
                   </button>
                 </div>
               </div>
-              <button type="submit" className="w-full bg-black text-white py-3 px-4 rounded-md transition duration-300 text-sm">Register</button>
+              {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+              <button 
+                type="submit" 
+                className="w-full bg-black text-white py-3 px-4 rounded-md transition duration-300 text-sm flex items-center justify-center"
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <>
+                    <LoadingSpinner />
+                    <span className="ml-2">Processing...</span>
+                  </>
+                ) : (
+                  'Register'
+                )}
+              </button>
             </form>
             <p className="mt-4 text-center text-sm text-gray-600">
               Already have an Account ? <Link href="/login" className="font-medium text-black hover:underline cursor-pointer">Login</Link>
@@ -75,8 +170,6 @@ export default function SignUp() {
             src="/images/sign-up.png"
             alt="Sign up illustration"
             layout='fill'
-            // width={827}
-            // height={650}
             objectFit='contain'
             className="h-full w-full object-contain"
           />
