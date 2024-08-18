@@ -4,7 +4,7 @@ import Link from "next/link"
 const Navbar = () => {
   return (
     <header className="sticky top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full">
-      <nav className="relative max-w-[66rem] w-full bg-herobg rounded-[28px] py-3 ps-5 pe-5 md:flex md:items-center md:justify-between md:py-0 mx-2 lg:mx-auto" aria-label="Global">
+      <nav className="relative max-w-[66rem] w-full bg-herobg rounded-[28px] py-3 ps-5 pe-5 md:flex md:items-center md:justify-between md:py-0 mx-2 lg:mx-auto mt-2" aria-label="Global">
         <div className="flex items-center justify-between w-full md:w-auto">
           {/* <!-- Logo --> */}
           <Link className="flex-none rounded-md text-xl inline-block font-semibold focus:outline-none focus:opacity-80" href="/" aria-label="Preline">
@@ -43,7 +43,7 @@ const Navbar = () => {
 
         {/* <!-- Contact Us Button --> */}
         <div className="hidden md:block">
-          <Link className="group inline-flex items-center gap-x-2 py-2 px-3 whitespace-nowrap text-sm text-heroyellow rounded-2xl border border-heroyellow" href="/">
+          <Link className="group inline-flex items-center gap-x-2 py-2 px-3 whitespace-nowrap text-sm text-heroyellow rounded-2xl border border-heroyellow" href="/sign-up">
             Lets start your learning journey
           </Link>
         </div>
