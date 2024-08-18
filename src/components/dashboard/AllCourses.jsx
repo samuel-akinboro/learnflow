@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 const AllCourses = () => {
   const courses = [
@@ -36,7 +37,7 @@ const AllCourses = () => {
     <div className="max-w-6xl mx-auto py-3">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {courses.map((course, index) => (
-          <div key={index} className="bg-white rounded-lg shadow-sm overflow-hidden">
+          <Link key={index} className="bg-white rounded-lg shadow-sm overflow-hidden" href={`/dashboard/all-courses/${index}`}>
             <div className="relative h-48">
               <Image 
                 src={course.image} 
@@ -53,7 +54,7 @@ const AllCourses = () => {
                 <span className="">${course.price}</span>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
       
