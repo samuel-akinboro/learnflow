@@ -18,7 +18,7 @@ const CreateCoursePage = () => {
       <div className="w-full lg:ps-64 xl:ps-64">
         <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
           <div className="container mx-auto max-w-4xl">
-            <h1 className="text-2xl font-medium mb-4">Create a new course</h1>
+            <h1 className="text-2xl font-medium mb-4 dark:text-black">Create a new course</h1>
             
             <hr className="my-8 border-gray-200" />
             <CreateCourse />

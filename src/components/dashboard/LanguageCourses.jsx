@@ -35,7 +35,7 @@ const LanguageCourses = () => {
 
   return (
     <div className="max-w-6xl mx-auto py-8">
-      <h2 className="text-2xl font-medium mb-4">Language Courses</h2>
+      <h2 className="text-2xl font-medium mb-4 dark:text-black">Language Courses</h2>
       <p className="text-herogray mb-6 text-sm">Choose from one over many of course and learn with industry leading experts.</p>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

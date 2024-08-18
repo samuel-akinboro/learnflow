@@ -17,14 +17,14 @@ const Dashboard = () => {
       <div className="w-full lg:ps-64 xl:ps-64">
         <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
           <div className="container mx-auto max-w-4xl">
-            <h1 className="text-2xl font-medium mb-4">Welcome to Learnflow</h1>
+            <h1 className="text-2xl font-medium mb-4 dark:text-black">Welcome to Learnflow</h1>
             <p className="text-base text-gray-600 mb-8">
               Learn at your own pace with lifetime access on mobile and desktop.
             </p>
             
             <hr className="my-8 border-gray-200" />
             
-            <h2 className="text-2xl font-medium mb-6">Let's continue Learning!</h2>
+            <h2 className="text-2xl font-medium mb-6 dark:text-black">Let's continue Learning!</h2>
             
             <div className="space-y-6 md:space-y-0 md:grid md:grid-cols-2 md:gap-6">
               <ContinueLearningCard

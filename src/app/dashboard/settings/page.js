@@ -18,42 +18,42 @@ const SettingsPage = () => {
       <div className="w-full lg:ps-64 xl:ps-64">
         <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
           <div className="container mx-auto max-w-4xl">
-            <h1 className="text-2xl font-medium mb-4">Edit Profile</h1>
+            <h1 className="text-2xl font-medium mb-4 dark:text-black">Edit Profile</h1>
             
             <hr className="my-8 border-gray-200" />
             <div className="">
               <form>
                 <section className="mb-8">
-                  <h2 className="text-lg font-medium mb-4">Edit Details</h2>
+                  <h2 className="text-lg font-medium mb-4 dark:text-black">Edit Details</h2>
                   <div className="space-y-4">
                     <div>
                       <label htmlFor="firstName" className="block text-sm text-herogray mb-1">First Name (required)</label>
-                      <input type="text" id="firstName" name="firstName" required className="w-full px-3 py-2 border border-gray-300 rounded-xl bg-zinc-100" />
+                      <input type="text" id="firstName" name="firstName" required className="w-full px-3 py-2 border border-gray-300 rounded-xl bg-zinc-100 dark:text-herogray" />
                     </div>
                     <div>
                       <label htmlFor="lastName" className="block text-sm text-herogray mb-1">Last Name (required)</label>
-                      <input type="text" id="lastName" name="lastName" required className="w-full px-3 py-2 border border-gray-300 rounded-xl bg-zinc-100" defaultValue="ATO" />
+                      <input type="text" id="lastName" name="lastName" required className="w-full px-3 py-2 border border-gray-300 rounded-xl bg-zinc-100 dark:text-herogray" defaultValue="ATO" />
                     </div>
                     <div>
                       <label htmlFor="nickname" className="block text-sm text-herogray mb-1">Nickname (required)</label>
-                      <input type="text" id="nickname" name="nickname" required className="w-full px-3 py-2 border border-gray-300 rounded-xl bg-zinc-100" />
+                      <input type="text" id="nickname" name="nickname" required className="w-full px-3 py-2 border border-gray-300 rounded-xl bg-zinc-100 dark:text-herogray" />
                     </div>
                   </div>
                 </section>
 
                 <section className="mb-8">
-                  <h2 className="text-lg font-medium mb-4">Login Information</h2>
+                  <h2 className="text-lg font-medium mb-4 dark:text-black">Login Information</h2>
                   <div className="space-y-4">
                     <div>
                       <label htmlFor="currentPassword" className="block text-sm text-herogray mb-1">Current Password (required)</label>
-                      <input type="password" id="currentPassword" name="currentPassword" required className="w-full px-3 py-2 border border-gray-300 rounded-xl bg-zinc-100" />
+                      <input type="password" id="currentPassword" name="currentPassword" required className="w-full px-3 py-2 border border-gray-300 rounded-xl bg-zinc-100 dark:text-herogray" />
                     </div>
                     <div className="text-right">
                       <a href="#" className="text-sm text-black underline-offset-2 underline">Can't remember password?</a>
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm text-herogray mb-1">Account Email</label>
-                      <input type="email" id="email" name="email" className="w-full px-3 py-2 border border-gray-300 rounded-xl bg-zinc-100 bg-gray-100" value="ayo1010@gmail.com" readOnly />
+                      <input type="email" id="email" name="email" className="w-full px-3 py-2 border border-gray-300 rounded-xl bg-zinc-100 dark:text-herogray bg-gray-100" value="ayo1010@gmail.com" readOnly />
                     </div>
                     <div>
                       <label htmlFor="newPassword" className="block text-sm text-herogray mb-1">Add new password</label>
@@ -62,7 +62,7 @@ const SettingsPage = () => {
                           type={showPassword ? "text" : "password"} 
                           id="newPassword" 
                           name="newPassword" 
-                          className="w-full px-3 py-2 border border-gray-300 rounded-xl bg-zinc-100 pr-10" 
+                          className="w-full px-3 py-2 border border-gray-300 rounded-xl bg-zinc-100 dark:text-herogray pr-10" 
                         />
                         <button 
                           type="button" 
@@ -84,7 +84,7 @@ const SettingsPage = () => {
                     </div>
                     <div>
                       <label htmlFor="confirmPassword" className="block text-sm text-herogray mb-1">Confirm new password</label>
-                      <input type="password" id="confirmPassword" name="confirmPassword" className="w-full px-3 py-2 border border-gray-300 rounded-xl bg-zinc-100" />
+                      <input type="password" id="confirmPassword" name="confirmPassword" className="w-full px-3 py-2 border border-gray-300 rounded-xl bg-zinc-100 dark:text-herogray" />
                     </div>
                   </div>
                 </section>
