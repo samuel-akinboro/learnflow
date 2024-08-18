@@ -1,8 +1,12 @@
+"use client";
+import { useAuth } from '@/hooks/useAuth'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
 const Header = () => {
+  const {user} = useAuth();
+
   return (
     <header className="sticky top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-[48] w-full bg-white border-b text-sm py-2.5 lg:ps-[260px] dark:bg-neutral-800 dark:border-neutral-700">
       <nav className="px-4 sm:px-6 flex basis-full items-center w-full mx-auto">
@@ -50,7 +54,7 @@ const Header = () => {
             </button> */}
 
             <div className='mr-3 max-w-36 md:max-w-52 lg:max-w-none'>
-              <p className="text-sm font-medium text-gray-800 dark:text-neutral-200 truncate">james@site.comjames@site.com</p>
+              <p className="text-sm font-medium text-gray-800 dark:text-neutral-200 truncate">{user?.displayName || 'james@site.comjames@site.com'}</p>
               <p className="text-sm text-gray-500 dark:text-neutral-500 truncate">Learner</p>
             </div>
 

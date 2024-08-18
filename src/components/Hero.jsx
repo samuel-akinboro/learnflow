@@ -5,8 +5,10 @@ const Hero = () => {
   return (
     <div>
       {/* <!-- Hero --> */}
-      <div className="bg-herobg">
-        <div className="max-w-5xl mx-auto px-4 xl:px-0 pt-24 lg:pt-32 text-center">
+      <div className="bg-herobg relative overflow-x-hidden">
+        <Image src='/images/coil.png' width={551} height={400} className="absolute w-[40%] -left-[18%] top-24 lg:-left-[25%]" />
+        <Image src='/images/coil.png' width={551} height={400} className="absolute w-[40%] -right-[18%] bottom-24 lg:-right-[28%]" />
+        <div className="max-w-5xl mx-auto px-4 xl:px-0 pt-24 lg:pt-32 text-center z-10 relative">
           <h1 className="text-white text-5xl md:text-6xl leading-normal md:leading-snug">
             The free, fun, and effective way to learn a language
           </h1>
