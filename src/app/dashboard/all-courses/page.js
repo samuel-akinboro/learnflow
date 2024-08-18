@@ -4,12 +4,12 @@ import ContinueLearningCard from '@/components/dashboard/ContinueLearningCard'
 import Header from '@/components/dashboard/Header'
 import Sidebar from '@/components/dashboard/Sidebar'
 
-const Dashboard = () => {
+const AllCoursesPage = () => {
   return (
     <div className='bg-[#F5F6F7] min-h-screen'>
       <Header />
       <div className="-mt-px">
-        <Breadcrumb />
+        <Breadcrumb page='All courses' />
       </div>
       <Sidebar />
 
@@ -31,4 +31,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default AllCoursesPage
