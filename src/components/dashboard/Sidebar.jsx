@@ -40,8 +40,11 @@ const Sidebar = () => {
       <div className="relative flex flex-col h-full max-h-full">
         <div className="px-6 pt-4">
           {/* <!-- Logo --> */}
-          <Link className="flex-none rounded-xl text-xl inline-block font-semibold focus:outline-none focus:opacity-80" href="/dashboard" aria-label="Preline">
+          <Link className="flex-none rounded-xl text-xl dark:inline-block font-semibold focus:outline-none focus:opacity-80 hidden" href="/dashboard" aria-label="Preline">
             <Image src="/images/logo.png" className="mr-3 h-8" alt="Learn flow Logo" width={155} height={33} />
+          </Link>
+          <Link className="flex-none rounded-xl text-xl inline-block font-semibold focus:outline-none focus:opacity-80 dark:hidden" href="/dashboard" aria-label="Preline">
+            <Image src="/images/logo-black.png" className="mr-3 h-8" alt="Learn flow Logo" width={155} height={33} />
           </Link>
           {/* <!-- End Logo --> */}
         </div>
