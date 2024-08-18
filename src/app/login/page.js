@@ -1,10 +1,11 @@
 "use client";
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from 'next/navigation';
 import { auth } from '@/firebaseConfig';
+import { useAuth } from '@/hooks/useAuth';
 
 function LoadingSpinner() {
   return (
@@ -23,6 +24,13 @@ export default function Login() {
   const [rememberMe, setRememberMe] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const { user, loading } = useAuth();
+
+  useEffect(() => {
+    if (!loading && user) {
+      router.push('/dashboard');
+    }
+  }, [user, loading, router]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,6 +57,9 @@ export default function Login() {
       setIsLoading(false);
     }
   };
+
+  if (loading) return <div className='h-screen bg-white w-screen'>Loading...</div>;
+  if (user) return null;
 
   return (
     <div className="min-h-screen bg-white flex items-center justify-center px-4">
