@@ -1,13 +1,18 @@
+"use client";
 import Image from "next/image"
 import Link from "next/link"
+import AnimatedCoil from "./AnimatedCoil"
+import { motion } from 'framer-motion';
 
 const Hero = () => {
   return (
     <div>
       {/* <!-- Hero --> */}
       <div className="bg-herobg relative overflow-x-hidden">
-        <Image src='/images/coil.png' width={551} height={400} className="absolute w-[40%] -left-[18%] top-24 lg:-left-[25%]" />
-        <Image src='/images/coil.png' width={551} height={400} className="absolute w-[40%] -right-[18%] bottom-24 lg:-right-[28%]" />
+        {/* <Image src='/images/coil.png' width={551} height={400} className="absolute w-[40%] -left-[18%] top-24 lg:-left-[25%]" /> */}
+        <AnimatedCoil className="absolute w-[40%] -left-[18%] top-24 lg:-left-[25%]" />
+        <AnimatedCoil className="absolute w-[40%] -right-[18%] bottom-24 lg:-right-[28%]" />
+        {/* <Image src='/images/coil.png' width={551} height={400} className="absolute w-[40%] -right-[18%] bottom-24 lg:-right-[28%]" /> */}
         <div className="max-w-5xl mx-auto px-4 xl:px-0 pt-24 lg:pt-32 text-center z-10 relative">
           <h1 className="text-white text-5xl md:text-6xl leading-normal md:leading-snug">
             The free, fun, and effective way to learn a language
@@ -21,12 +26,24 @@ const Hero = () => {
             Start a new course!
           </Link>
           <div className="flex flex-col items-center mt-5">
+          <motion.div
+            animate={{
+              y: [0, -5, 0],
+            }}
+            transition={{
+              duration: 3,
+              ease: "easeInOut",
+              repeat: Infinity,
+            }}
+          >
             <Image
               src='/images/join-pic.png'
               width={123}
               height={45}
               objectFit="contain"
+              alt="Join picture"
             />
+          </motion.div>
             <div className="max-w-4xl">
               <p className="mt-5 text-neutral-400 text-lg">
                 Join thousands of students to start coding now!
