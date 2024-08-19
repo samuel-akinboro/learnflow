@@ -1,5 +1,6 @@
-import Image from "next/image"
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from 'framer-motion';
 
 const CTASection = () => {
   return (
@@ -23,12 +24,24 @@ const CTASection = () => {
           </div>
           {/* <!-- End Col --> */}
           <div className="md:block relative">
+          <motion.div
+            className="rounded-xl transform -rotate-12 relative -bottom-12 md:right-[-5.3rem]"
+            animate={{
+              rotate: [-14, -10, -14],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          >
             <Image
-              className="rounded-xl transform -rotate-12 relative -bottom-12 md:right-[-5.3rem]"
               src="/images/dashboard.png"
               width={494}
               height={427}
+              alt="Dashboard"
             />
+          </motion.div>
           </div>
           {/* <!-- End Col --> */}
         </div>

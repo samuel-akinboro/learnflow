@@ -118,7 +118,7 @@ export default function Login() {
                     id="remember"
                     checked={rememberMe}
                     onChange={(e) => setRememberMe(e.target.checked)}
-                    className="h-4 w-4 text-heroyellow focus:ring-heroyellow border-gray-300 rounded dark:text-herogray"
+                    className="h-4 w-4 text-heroyellow focus:ring-heroyellow border-gray-300 rounded dark:text-herogray accent-black"
                   />
                   <label htmlFor="remember" className="ml-2 block text-sm text-herogray">
                     Remember me

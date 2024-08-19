@@ -5,7 +5,8 @@ const LearnSection = () => {
   return (
     <div className="bg-white">
       <div className="max-w-5xl px-4 xl:px-0 md:py-10 mx-auto">
-        <div className="md:grid md:grid-cols-2 md:gap-10 lg:gap-16 md:items-center flex flex-col-reverse gap-6">
+        <div className="md:grid md:grid-cols-2 md:gap-10 lg:gap-16 md:items-center flex flex-col-reverse gap-6" data-aos="fade-left"
+     data-aos-duration="500">
           {/* <!-- End Col --> */}
           <div className="md:block relative">
             <Image
@@ -32,7 +33,8 @@ const LearnSection = () => {
             {/* <!-- End Blockquote --> */}
           </div>
         </div>
-        <div className="md:grid md:grid-cols-2 md:gap-10 lg:gap-16 md:items-center flex flex-col-reverse gap-6 mt-8">
+        <div className="md:grid md:grid-cols-2 md:gap-10 lg:gap-16 md:items-center flex flex-col-reverse gap-6 mt-8" data-aos="fade-right"
+     data-aos-duration="500">
           <div>
             {/* <!-- Blockquote --> */}
             <blockquote>
