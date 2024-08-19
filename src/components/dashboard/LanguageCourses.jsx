@@ -42,7 +42,8 @@ const LanguageCourses = () => {
   return (
     <div className="max-w-6xl mx-auto py-8">
       <h2 className="text-2xl font-medium mb-4 dark:text-black">Language Courses</h2>
-      <p className="text-herogray mb-6 text-sm">Choose from one over many of course and learn with industry leading experts.</p>
+      {courses?.length > 0 && <p className="text-herogray mb-6 text-sm">Choose from one over many of course and learn with industry leading experts.</p>}
+      {courses?.length === 0 && <p className="text-herogray mb-6 text-sm">You have not created any course</p>}
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {courses.map((course) => (
@@ -66,12 +67,18 @@ const LanguageCourses = () => {
           </Link>
         ))}
       </div>
+
+      {courses?.length === 0 && <div className="text-center mt-8">
+        <Link href="/dashboard/create-course" className="bg-heroyellow hover:bg-yellow-300 text-black text-sm py-2.5 px-6 rounded-2xl">
+          Create course
+        </Link>
+      </div>}
       
-      <div className="text-center mt-8">
+      {courses?.length > 4 && <div className="text-center mt-8">
         <Link href="/dashboard/all-courses" className="bg-heroyellow hover:bg-yellow-300 text-black text-sm py-2.5 px-6 rounded-2xl">
           View all courses
         </Link>
-      </div>
+      </div>}
     </div>
   );
 };
