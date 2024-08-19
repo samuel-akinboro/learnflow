@@ -70,7 +70,7 @@ const LanguageCourses = () => {
 
       {courses?.length === 0 && <div className="text-center mt-8">
         <Link href="/dashboard/create-course" className="bg-heroyellow hover:bg-yellow-300 text-black text-sm py-2.5 px-6 rounded-2xl">
-          Create course
+          Create a course
         </Link>
       </div>}
       
